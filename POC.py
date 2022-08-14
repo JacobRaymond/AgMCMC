@@ -53,4 +53,4 @@ for y in range(1,k):
 #Find mean absolute relative error difference
 trueval=[GOOG[(x):(x+fwd)] for x in samp]
 pred_diff=[numpy.abs(pred[x]-trueval[x])/trueval[x] for x in range(1,k)]
-print(numpy.mean(pred_diff, axis=0)) #Again, about a 5% MARE - fine performance
+print(numpy.mean(pred_diff, axis=1)) #Again, about a 5% MARE - fine performance
