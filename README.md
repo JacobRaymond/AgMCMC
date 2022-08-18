@@ -9,3 +9,5 @@ POC.R : A crude implementation of the Monte Carlo approach https://medium.com/an
 POC.py : A basic Python implementation of POC.R. 
 
 Control Variates.py: A version of POC.py with a control variate implementation. The control variates are simply the standard normal values that were generated for the simulation. Refer to Glasserman (2003) section 4.1.
+
+Antithetic Variables.py: A version of POC.py with an antithetic variables implementation. The control variates are simply the negative of the standard normal values that were generated for the simulation. Refer to Glasserman (2003) section 4.2.
