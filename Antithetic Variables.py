@@ -68,6 +68,6 @@ pred_diff2=[numpy.abs(cms2[x]-trueval[x])/trueval[x] for x in range(1,k)]
 print(numpy.mean(pred_diff2, axis=1)) #Again, about a 5% MARE - no loss in accuracy
 
 #Variance reduction
-print(numpy.mean(vrr[1:, :], axis=1)) #Constant reduction of variance of 10%!
+print(numpy.mean(vrr[1:, :], axis=1)) #Constant reduction of variance of 90%!
 
 
