@@ -13,3 +13,5 @@ Control Variates.py: A version of POC.py with a control variate implementation. 
 Antithetic Variables.py: A version of POC.py with an antithetic variables implementation. The control variates are simply the negative of the standard normal values that were generated for the simulation. Refer to Glasserman (2003) section 4.2.
 
 Strat Sampling.py: A version of POC.py with a stratified sampling implementation. The stratification employed here concerns the terminal value of the Brownian motion. Refer to Glasserman (2003) section 4.3.
+
+LCG.py: A version of POC.py where the paths were generated using a linear congruential generator (a=17364) with Cranley-Patterson Rotation. Source: "Monte Carlo and Quasi-Monte Carlo Sampling" by Christiane Lemieux, 2009, Springer.
