@@ -3,7 +3,7 @@ My solution to a simpler version of the problem posed here: https://warwick.ac.u
 
 A major reference is "Monte Carlo Methods in Financial Engineering" by Paul Glasserman, 2003, Springer.
 
-POC_Final is the final code (WORK IN PROGRESS).
+POC_Final is the final code (WORK IN PROGRESS), with varred containing dependency functions.
 
 ## Description of the method
 
