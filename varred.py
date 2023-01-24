@@ -1,14 +1,34 @@
-# -*- coding: utf-8 -*-
-"""
-Created on Mon Dec 19 19:32:59 2022
-
-@author: jacob
-"""
-#NEED TO CLEAN
 import numpy as numpy
 from scipy.stats import norm
 import random
 import math
+
+
+def StMc (df, rep):
+    fwd=round(len(df)*0.2)
+    
+    #Calculate drift
+    mu=numpy.mean(df)
+    s=numpy.std(df)
+    d=mu-0.5*(s**2)
+    
+    #Generate volatilities
+    Z=s*numpy.random.normal(0, 1, size=(rep, fwd))
+    
+    #Evaluate the rates of return
+    r=Z+d
+    
+    #Simulate paths
+    S = numpy.empty(shape=(rep,fwd),dtype='object')
+    S[:,0]=df[len(df)-1]
+    for i in range(1,fwd):
+        S[:,i]=S[:,i-1]*numpy.exp(r[:,i])
+        
+    #Output prediction
+    pred=numpy.mean(S, axis=0)
+    vr=numpy.var(S[:, 1:], axis=0)
+    
+    return pred, numpy.mean(vr)
 
 def convar (df, rep):
     
