@@ -1,6 +1,7 @@
 import yfinance as yf
 import numpy as np
 import sklearn.model_selection as ms
+from tabulate import tabulate
 
 from varred import *
 
@@ -51,15 +52,39 @@ w=np.mean(ws, axis=0)
 #Predict paths
 pths=[]
 pths_test=(convar(test[0:testnum-pred], rep)[0], antvar(test[0:testnum-pred], rep)[0], strsam(test[0:testnum-pred], rep)[0], lcg(test[0:testnum-pred], rep)[0])
-    
+
 #Weighted average
 for i in range(4):
   pths.append(w[i]*pths_test[i])
 
 #Prediction
-sum(pths)[0:pred]
+lpred=sum(pths)[0:pred]
 
 #Real values
-test[testnum-pred:]  
+rv=test[testnum-pred:]
+
+#Comparison to other algorithms
+
+#Standard Monte Carlo
+MC=StMc(test[0:testnum-pred], rep)
   
-    
+#Control variates
+cv=convar(test[0:testnum-pred], rep)
+      
+#Antithetic Variables
+av=antvar(test[0:testnum-pred], rep)
+      
+#Stratified sampling
+ss=strsam(test[0:testnum-pred], rep)
+      
+#LCG
+lg=lcg(test[0:testnum-pred], rep) 
+np.mean(abs(MC[0][0:50]-rv))
+
+print(tabulate([['Standard Monte Carlo', np.mean(abs(MC[0][0:50]-rv)), 1], 
+                         ['Control Variate', np.mean(abs(cv[0][0:50]-rv)), cv[1]],
+                         ['Antithetic Variables', np.mean(abs(av[0][0:50]-rv)), av[1]],
+                         ['Stratified Sampling', np.mean(abs(ss[0][0:50]-rv)), ss[1]],
+                         ['LCG', np.mean(abs(lg[0][0:50]-rv)), lg[1]],
+                         ['Combined Learner', np.mean(abs(lpred[0:50]-rv)), "NA"]],
+                        headers=['Algorithm', 'MAE', 'Relative Variance'])) 
