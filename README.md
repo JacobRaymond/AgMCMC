@@ -15,7 +15,7 @@ Based on the machine learning theory of ensemble learning, I wanted to determine
 
 My ensemble learner is comprised of four methods:
 - Control variates: we correct the error of our target variable by substracting from the draws the errors of a variable with known values and a strong correlation to the target variable.
--Antithetic variables: we introduce negative correlation between pairs of draws and take their mean. Thus, while the estimates will still be valid draws, their variance will be diminished.
+- Antithetic variables: we introduce negative correlation between pairs of draws and take their mean. Thus, while the estimates will still be valid draws, their variance will be diminished.
 - Stratified sampling: the sample space is divided into a set of equal-sized strata. We sample a number of observations from each stratum proportional to its draw probability. 
 - Linear Congruential Generator (LCG): inspired by "quasi-Monte Carlo", sampling using an LCG allows for a more thorough exploration of the sample space. Thus, repeated draws, while remaining probabilistic, tend to cover a comparable area of the sample space, as opposed to the more chaotic exploration done by random draws. 
 
