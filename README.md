@@ -21,6 +21,8 @@ My ensemble learner is comprised of four methods:
 
 The weight applied to each method is proportional to its individual variance reduction potential.
 
+The resulting variance reduction is significant, at least in the experiment that was perform while compiling this package. Note that some methods on their own had both a lowered variance AND a lowered mean absolute error. However, the strength of an ensemble method is, of course, the ability to mitigate any issues an individual method might face.
+
 ## File description
 POC.R : A crude implementation of the Monte Carlo approach https://medium.com/analytics-vidhya/monte-carlo-simulations-for-predicting-stock-prices-python-a64f53585662. Coded in R and with no real regards to optimization: the goal is to obtain a baseline idea of prediction in finance using a simple GBM stock model. We attempt to predict the share price of Alphabet (GOOG) 50 days in the future, using 50 starting points. 
 
