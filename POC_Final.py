@@ -81,10 +81,14 @@ ss=strsam(test[0:testnum-pred], rep)
 lg=lcg(test[0:testnum-pred], rep) 
 np.mean(abs(MC[0][0:50]-rv))
 
+#Variance of learner
+vre=np.average([cv[1],av[1],ss[1], lg[1]], weights=w)
+
+
 print(tabulate([['Standard Monte Carlo', np.mean(abs(MC[0][0:50]-rv)), 1], 
                          ['Control Variate', np.mean(abs(cv[0][0:50]-rv)), cv[1]],
                          ['Antithetic Variables', np.mean(abs(av[0][0:50]-rv)), av[1]],
                          ['Stratified Sampling', np.mean(abs(ss[0][0:50]-rv)), ss[1]],
                          ['LCG', np.mean(abs(lg[0][0:50]-rv)), lg[1]],
-                         ['Combined Learner', np.mean(abs(lpred[0:50]-rv)), "NA"]],
+                         ['Combined Learner', np.mean(abs(lpred[0:50]-rv)), vre]],
                         headers=['Algorithm', 'MAE', 'Relative Variance'])) 
